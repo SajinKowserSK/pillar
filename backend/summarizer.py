@@ -29,9 +29,13 @@ def summarize(text):
     querystring = {"txt": text, "sentences": "5"}
     summary = requests.request(
         "GET", url, headers=headers, params=querystring).json()['summary']
-    medical_info = aws_medclient.detect_entities(Text=text)['Entities']
-    sentiment = aws_compclient.detect_sentiment(Text=text, LanguageCode='en')
-    entities = aws_compclient.detect_entities(Text=text, LanguageCode='en')
-    res = {'medical_info': medical_info, 'summary': summary,
+    med_entities = aws_medclient.detect_entities(Text=text)['Entities']
+    med_info = [{'Category': x['Category'], 'Text': x['Text'],
+                 'Traits': x['Traits'], 'Type': x['Type']} for x in med_entities]
+    sentiment = aws_compclient.detect_sentiment(
+        Text=text, LanguageCode='en')['Sentiment']
+    entities = [x['Text'] for x in aws_compclient.detect_entities(
+        Text=text, LanguageCode='en')['Entities']]
+    res = {'medical_info': med_info, 'summary': summary,
            'sentiment': sentiment, 'entities': entities}
     return jsonify(res)
