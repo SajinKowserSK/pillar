@@ -14,18 +14,18 @@ rekog_client = boto3.client(service_name='rekognition',
                             aws_access_key_id=aws_access_key_id,
                             aws_secret_access_key=aws_secret_access_key)
 
-def detect_faces(photo, bucket):
+
+def detect_faces(photo):
+
+    imageSource = open(photo, 'rb')
 
     response = rekog_client.detect_faces(
-        Image={'S3Object': {'Bucket': 'shaman-faces', 'Name': photo}}, Attributes=['ALL'])
+        Image={'Bytes': imageSource.read()}, Attributes=['ALL'])
 
-    print('Detected faces for ' + photo)
-    for faceDetail in response['FaceDetails']:
-        print('The detected face is between ' + str(faceDetail['AgeRange']['Low'])
-              + ' and ' + str(faceDetail['AgeRange']['High']) + ' years old')
-        print('Here are the other attributes:')
-        print(json.dumps(faceDetail, indent=4, sort_keys=True))
-    return len(response['FaceDetails'])
+    data = response['FaceDetails'][0]
+    res = {'AgeRange': data['AgeRange'],
+           'Gender': data['Gender'], 'Emotion': [x['Type'] for x in data['Emotions'] if x['Confidence'] == max([x['Confidence'] for x in data['Emotions']])][0]}
+    return res
 
 
 def compare_faces(sourceFile, targetFile):
@@ -33,20 +33,18 @@ def compare_faces(sourceFile, targetFile):
     imageSource = open(sourceFile, 'rb')
     imageTarget = open(targetFile, 'rb')
 
-    response = rekog_client.compare_faces(SimilarityThreshold=80,
+    response = rekog_client.compare_faces(SimilarityThreshold=70,
                                           SourceImage={
                                               'Bytes': imageSource.read()},
                                           TargetImage={'Bytes': imageTarget.read()})
 
-    for faceMatch in response['FaceMatches']:
-        position = faceMatch['Face']['BoundingBox']
-        similarity = str(faceMatch['Similarity'])
-        print('The face at ' +
-              str(position['Left']) + ' ' +
-              str(position['Top']) +
-              ' matches with ' + similarity + '% confidence')
-
     imageSource.close()
     imageTarget.close()
-    res = {'match': len(response['FaceMatches'])}
+    return len(response['FaceMatches'])
+
+
+def face_eval(sourceFile, targetFile):
+    details = detect_faces(sourceFile)
+    match = compare_faces(sourceFile, targetFile)
+    res = {'match': match, 'details': details}
     return jsonify(res)
