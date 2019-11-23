@@ -9,9 +9,9 @@
         }
     });
 
-    initRealTimeChart();
+
     initDonutChart();
-    initSparkline();
+
 });
 
 var realtime = 'on';
@@ -68,24 +68,26 @@ function initSparkline() {
     });
 }
 
+
+
 function initDonutChart() {
     Morris.Donut({
         element: 'donut_chart',
         data: [{
-            label: 'Chrome',
+            label: 'City1',
             value: 37
         }, {
-            label: 'Firefox',
+            label: 'City2',
             value: 30
         }, {
-            label: 'Safari',
+            label: 'City3',
             value: 18
         }, {
-            label: 'Opera',
+            label: 'City4',
             value: 12
         },
         {
-            label: 'Other',
+            label: 'City5',
             value: 3
         }],
         colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
