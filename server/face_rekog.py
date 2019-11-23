@@ -20,7 +20,6 @@ def detect_faces(photo, bucket):
 
 
 def compare_faces(sourceFile, targetFile):
-
     client=boto3.client('rekognition')
    
     imageSource=open(sourceFile,'rb')
