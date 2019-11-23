@@ -33,4 +33,5 @@ if __name__ == "__main__":
                     "vomiting lasting several hours to two days. "
                     "She has never taken anything for these headaches "
                     "other than ibuprofen or Vicodin, both of which are "
-                    "partially effective. The last headache of that type was two months ago."))
+                    "partially effective. The last headache of that type was two months ago.")
+)
