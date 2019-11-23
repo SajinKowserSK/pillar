@@ -1,7 +1,7 @@
 from flask import Flask, request
 
 from summarizer import summarize
-
+from face_rekog import compare_faces
 app = Flask(__name__)
 
 
@@ -14,7 +14,15 @@ def home():
 def summarizer():
     if request.method == 'POST':
         data = request.form
-        return (summarize(data["text"]))
+        return summarize(data["text"])
+
+
+@app.route('/face/', methods=['GET', 'POST'])
+def face_match():
+    if request.method == 'POST':
+        data = request.form
+        source, target = data['source'], data['target']
+        return compare_faces(source, target)
 
 
 if __name__ == "__main__":
