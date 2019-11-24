@@ -17,7 +17,7 @@ def sendText(message, number):
 
 def makeCall(number):
     data = {"From": "+1 647-930-8813", "To": number,
-            "Url": 'https://pillar-tower.herokuapp.com/call-xml/', 'Transcribe': True, 'TranscribeCallback': 'https://pillar-tower.herokuapp.com/call-transcribe/'
+            "Url": 'https://pillar-tower.herokuapp.com/call-xml/'
             }
     r = requests.post(url=SMS_URL, data=data)
     return r
