@@ -11,9 +11,10 @@ collection = database.dispense
 
 
 def poll():
-    result = collection.count({"dispense": "1"})
-    print("COUNT: " + result)
-    return "1" if result == None else "0"
+    for doc in collection.find({}):
+        del doc['_id']
+        document = doc
+    return document["dispense"]
 
 
 # Establish the connection on a specific port
@@ -21,8 +22,8 @@ ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
 
 while True:
     dispense_pill = poll()
-    ser.write(dispense_pill.encode('utf-8'))
     if (dispense_pill == "1"):
+        ser.write(dispense_pill.encode('utf-8'))
         collection.update_one({"dispense": "1"},  {"$set": {"dispense": "0"}})
     print(dispense_pill)
     sleep(.1)
