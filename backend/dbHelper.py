@@ -52,5 +52,9 @@ class PatientDBHelper:
         print("Medical Record updated for patient {}".format(patientName))
 
 
+    def updateValueFor(self, patientName, keyName, value):
+        query = {"name": patientName}
+        self.collection.update_one(query, {"$set":{keyName:value}})
+
 if __name__ == "__main__":
     p = PatientDBHelper()
