@@ -23,7 +23,7 @@ void loop() {
       up();
     }
    }
-  delay(500); // delay for 1/10 of a second
+  delay(0.1); // delay for 1/10 of a second
 }
 
 
