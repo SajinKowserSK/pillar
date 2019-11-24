@@ -15,22 +15,22 @@ void setup() {
 void loop() {
   char inByte = ' ';
   if(Serial.available()){
-    if (dispense == 0) {
-      up();
-      dispense = 1;
-    } else {
+    char dispense = Serial.read(); 
+    if (dispense == '1') {
       down();
-      dispense = 0;
+      dispense = '0';
+      delay(1000);
+      up();
     }
    }
-  delay(2000); // delay for 1/10 of a second
+  delay(500); // delay for 1/10 of a second
 }
 
 
 void down() {
   for (pos = 150; pos >= 0; pos -= 1) { // goes from 180 degrees to 0 degrees
     myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(1);                       // waits 15ms for the servo to reach the position
+    delay(15);                       // waits 15ms for the servo to reach the position
   }
 }
 
