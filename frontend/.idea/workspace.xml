@@ -20,7 +20,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../templateCopy" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -52,7 +52,7 @@
       <updated>1574486039017</updated>
       <workItem from="1574486041190" duration="21146000" />
       <workItem from="1574511023040" duration="225000" />
-      <workItem from="1574511304939" duration="13211000" />
+      <workItem from="1574511304939" duration="29071000" />
     </task>
     <servers />
   </component>

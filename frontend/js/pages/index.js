@@ -75,10 +75,10 @@ function initDonutChart() {
         element: 'donut_chart',
         data: [{
             label: 'City1',
-            value: 37
+            value: 40
         }, {
             label: 'City2',
-            value: 30
+            value: 27
         }, {
             label: 'City3',
             value: 18
@@ -90,7 +90,7 @@ function initDonutChart() {
             label: 'City5',
             value: 3
         }],
-        colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
+        colors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
         formatter: function (y) {
             return y + '%'
         }
