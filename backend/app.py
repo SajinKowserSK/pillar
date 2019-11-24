@@ -38,18 +38,26 @@ def patient():
         res = {'message': data['notes'][-1]['message']}
         return jsonify(res)
 
-@app.route('/sendNote',methods=['POST'])
+@app.route('/sendNote/',methods=['POST'])
 def sendNote():
-    pin = request.form['pin']
-    note = request.form['name']
-
+    print("GOt here.")
+    pin = request.form['userPin']
+    note = request.form['doctorNote']
+    print(pin, note)
     d = DoctorNotesHelper()
     d.addNoteForPatient(pin, note)
+
+    return "Hi"
+
+@app.route('/sPatient/', methods=['GET'])
+def getPatientDataFor():
+    p = PatientDBHelper()
+    name = request.args.get("name")
+    return p.getDataForPatientName(name)
 
 @app.route('/patients/', methods=['GET'])
 def patientData():
     p = PatientDBHelper()
-    print(p.getAllPatients())
     return jsonify(p.getAllPatients())
 
 
@@ -74,6 +82,8 @@ def setState():
     print(request.form['personName'])
 
     return "Hello"
+
+
 
 
 if __name__ == "__main__":

@@ -256,20 +256,6 @@
                 </div>
             </div>
 
-                <script>
-                    function sendPost() {
-
-                    }
-                    function incrementValue(formNum)
-{
-    var value = parseInt(document.getElementById(formNum).value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    document.getElementById(formNum).value = value;
-}
-
-                </script>
-
                    <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -288,15 +274,15 @@
                             <h2 class="card-inside-title">Enter New Notes About Patient Here </h2>
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <form id='noteForm' action="" method="POST">
+                                    <form id='noteForm' target="_blank" method="POST" action="http://127.0.0.1:5000/sendNote/">
                                     <div class="form-group" >
                                         <div class="form-line">
-                                            <textarea rows="4" class="form-control no-resize"></textarea>
+                                            <textarea id="doctorNote" name="doctorNote" rows="4" class="form-control no-resize"></textarea>
                                         </div>
-
+                                            <input type="hidden" name="userPin" id="userPin"/>
                                     </div>
                                     <div class = "formSubmit">
-                                        <button type="button" class="btn btn-primary btn-lg" onclick="sendPost()">Submit</button>
+                                        <input type="submit" class="btn btn-primary btn-lg">Submit</input>
                                     </div>
                                     </form>
                                 </div>
@@ -307,6 +293,18 @@
                     </div>
                 </div>
             </div>
+
+
+                <script>
+                    var request =  new XMLHttpRequest();
+                    request.open('GET', 'http://127.0.0.1:5000/sPatient/?name=Shafin Siddique', false);
+                    request.send(null);
+                    console.log(request.responseText);
+                    var data = JSON.parse(request.responseText);
+                    console.log(data['pin']);
+                    document.getElementById("userPin").value = data['pin'];
+                </script>
+
 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">

@@ -24,6 +24,14 @@ class PatientDBHelper:
 
         return self.collection.find_one({"pin": pin})
 
+    def getDataForPatientName(self, name):
+        """Get all the data for patient with 'patientName' """
+
+        data = self.collection.find_one({"name": name})
+        del data['_id']
+
+        return data
+
     def addNewPatient(self, name, age, sex, height, weight, bloodtype,  symptoms,
                       curr_sentiment, numberOfVisits, pin):
         """insert a new patient into the system. This is when the patient
@@ -76,7 +84,7 @@ class DoctorNotesHelper:
 
     def addNoteForPatient(self, pin, note):
         self.collection.update_one(
-            {"pin": pin}, {"$push", {"message": note, "time": datetime.now()}})
+            {"pin": pin}, {"$push":{"notes":{"message": note, "time": datetime.now()}}})
 
         print("Note created for Patient #{}".format(pin))
 
