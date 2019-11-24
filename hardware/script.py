@@ -1,7 +1,6 @@
 from time import sleep
 import requests
 import serial
-import polling
 from pymongo import MongoClient
 from datetime import datetime
 
@@ -12,8 +11,9 @@ collection = database.dispense
 
 
 def poll():
-    result = collection.find({"dispense": "0"})
-    return False if result == None else True
+    result = collection.count({"dispense": "1"})
+    print("COUNT: " + result)
+    return "1" if result == None else "0"
 
 
 # Establish the connection on a specific port
@@ -21,9 +21,9 @@ ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
 
 while True:
     dispense_pill = poll()
-    ser.write(dispense_pill)
-    if (dispense_pill):
-        collection.update_one({"dispense": "1"},  {"$set": {"dispense": "0"}}))
+    ser.write(dispense_pill.encode('utf-8'))
+    if (dispense_pill == "1"):
+        collection.update_one({"dispense": "1"},  {"$set": {"dispense": "0"}})
     print(dispense_pill)
     sleep(.1)
     # Delay for one tenth of a second
