@@ -17,7 +17,7 @@ def sendText(message, number):
 
 def makeCall(number):
     data = {"From": "+1 647-930-8813", "To": number,
-            "Url": 'https://pillar-tower.herokuapp.com/call-xml/'
+            "Url": 'https://cloud.zang.io/data/inboundxml/34b244e3a9bba1a1e2e8bb65d0c549fd2e1bb1ca'
             }
     r = requests.post(url=SMS_URL, data=data)
     return r
