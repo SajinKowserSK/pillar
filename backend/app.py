@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from dbHelper import PatientDBHelper
+from dbHelper import PatientDBHelper, DoctorNotesHelper, DispenseDBHelper
 from summarizer import summarize
 from face_rekog import face_eval
 from flask import render_template
@@ -30,8 +30,8 @@ def face_match():
 def patient():
     if request.method == 'GET':
         pin = request.args.get('pin')
-        pdb = PatientDBHelper()
-        data = pdb.getNote(pin)
+        dnh = DoctorNotesHelper()
+        data = dnh.getNote(pin)
         res = {'message': data['notes'][-1]['text']}
         return jsonify(res)
 
@@ -43,11 +43,13 @@ def patientData():
     return jsonify(p.getAllPatients())
 
 
-@app.route('/dispense/', methods=['GET'])
+@app.route('/dispense/', methods=['POST'])
 def dispensePing():
     pin = request.args.get('pin')
     pdb = PatientDBHelper()
     data = pdb.getDataForPatient(str(pin))
+    dis = DispenseDBHelper()
+    dis.toggleDispense("1")
     msg = "Your prescription is "
     print(data['prescription'])
     for prescription in data['prescription']:

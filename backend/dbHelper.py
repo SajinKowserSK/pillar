@@ -84,6 +84,14 @@ class DoctorNotesHelper:
         return self.collection.find_one({"pin": pin})
 
 
+class DispenseDBHelper:
+    def __init__(self):
+        self.collection = database.dispense
+
+    def toggleDispense(self, val):
+        self.collection.update_one({"dispense": "1"},  {"$set": {"dispense": val}}))
+
+
 if __name__ == "__main__":
-    d = DoctorNotesHelper()
+    d=DoctorNotesHelper()
     print(d.getNote("1234"))

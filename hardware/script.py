@@ -1,25 +1,29 @@
 from time import sleep
 import requests
 import serial
+import polling
+from pymongo import MongoClient
+from datetime import datetime
+
+client = MongoClient(
+    "mongodb+srv://shafinsiddique:Ishafin98@cluster0-zv1ff.mongodb.net/test?retryWrites=true&w=majority")
+database = client.get_database("shaman")
+collection = database.dispense
 
 
-URL = 'http://localhost:5000/summarize/'
-
-
-def test():
-    text = "Mrs. Smith states that on Sunday evening (7/14/03) about 20 minutes after sitting down to work at her computer, she developed blurred vision, which she describes as the words on the computer looking fuzzy and seeming to run into each other. When she looked up at the clock on the wall, she had a hard time making out the numbers. At the same time, she also noted a strange sensation in her right eyelid."
-    data = {'text': text}
-    r = requests.post(url=URL, data=data)
-    print(r)
-    return r
+def poll():
+    result = collection.find({"dispense": "0"})
+    return False if result == None else True
 
 
 # Establish the connection on a specific port
 ser = serial.Serial('/dev/tty.usbmodem14201', 9600)
-while True:
-    # Convert the decimal number to ASCII then send it to the Arduino
-    ser.write(1)
-    print(ser.readline())  # Read the newest output from the Arduino
-    sleep(.1)  # Delay for one tenth of a second
 
-# test()
+while True:
+    dispense_pill = poll()
+    ser.write(dispense_pill)
+    if (dispense_pill):
+        collection.update_one({"dispense": "1"},  {"$set": {"dispense": "0"}}))
+    print(dispense_pill)
+    sleep(.1)
+    # Delay for one tenth of a second
