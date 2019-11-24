@@ -67,14 +67,18 @@ class DoctorNotesHelper:
         self.collection = database.doctorNotes
 
 
-    def addPatient(self, pin, patientName, doctorNotes):
+    def addPatient(self, pin, patientName):
         self.collection.insert_one({"pin":pin,
                                     "name": patientName,
-                                    "notes":doctorNotes,
-                                    "time":datetime.now()})
+                                    "notes":[]})
 
-        print("Doctor's notes added for {}".format(patientName))
 
+        print("Patient created in Doctor's table {}".format(patientName))
+
+    def addNoteForPatient(self, pin, note):
+        self.collection.update_one({"pin":pin},{"$push",{"message":note, "time":datetime.now()}})
+
+        print("Note created for Patient #{}".format(pin))
 
     def getNote(self, pin):
         return self.collection.find_one({"pin":pin})
