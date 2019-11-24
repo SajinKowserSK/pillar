@@ -7,8 +7,11 @@ DateTime==4.3
 dnspython==1.16.0
 docutils==0.15.2
 Flask==1.1.1
+Flask-Cors==3.0.8
+future==0.18.2
 gunicorn==20.0.2
 idna==2.8
+iso8601==0.1.12
 itsdangerous==1.1.0
 Jinja2==2.10.3
 jmespath==0.9.4
@@ -17,8 +20,10 @@ polling==0.3.1
 pymongo==3.9.0
 python-dateutil==2.8.0
 pytz==2019.3
+PyYAML==5.1.2
 requests==2.22.0
 s3transfer==0.2.1
+serial==0.0.97
 six==1.13.0
 urllib3==1.25.7
 Werkzeug==0.16.0
