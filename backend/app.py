@@ -31,7 +31,7 @@ def patient():
         name = request.args.get('name')
         pdb = PatientDBHelper()
         data = pdb.getDataForPatient(name)
-        res = {'summary': data['medicalRecord'][0]['data']['summary']}
+        res = {'summary': data['medicalRecord'][1]['data']['summary']}
         return jsonify(res)
 
 
