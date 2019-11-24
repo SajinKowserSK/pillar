@@ -29,17 +29,33 @@ def face_match():
 @app.route('/patient/', methods=['GET', 'POST'])
 def patient():
     if request.method == 'GET':
-        name = request.args.get('name')
+        pin = request.args.get('pin')
         pdb = PatientDBHelper()
-        data = pdb.getDataForPatient(name)
-        res = {'summary': data['medicalRecord'][1]['data']['summary']}
+        data = pdb.getNote(pin)
+        res = {'message': data['notes'][-1]['text']}
         return jsonify(res)
 
-@app.route('/patients/',methods=['GET'])
+
+@app.route('/patients/', methods=['GET'])
 def patientData():
     p = PatientDBHelper()
     print(p.getAllPatients())
     return jsonify(p.getAllPatients())
+
+
+@app.route('/dispense/', methods=['POST'])
+def dispensePing():
+    pin = request.args.get('pin')
+    pdb = PatientDBHelper()
+    data = pdb.getDataForPatient(pin)
+    msg = "Your prescription is "
+    for prescription in data['prescription']:
+        msg += data['prescription']['dosage'] + \
+            ' of ' + data['prescription']['name'] + \
+            ' ' + data['prescription']['instruction']
+    msg += ' You will get a text for your next pickup!'
+    res = {'num_prescriptions': len(data['prescription'], 'message': msg)}
+    return jsonify(res)
 
 
 if __name__ == "__main__":
