@@ -13,6 +13,7 @@ itsdangerous==1.1.0
 Jinja2==2.10.3
 jmespath==0.9.4
 MarkupSafe==1.1.1
+polling==0.3.1
 pymongo==3.9.0
 python-dateutil==2.8.0
 pytz==2019.3
