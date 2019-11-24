@@ -64,7 +64,7 @@ def dispensePing():
 
 @app.route('/setState/', methods=['POST'])
 def setState():
-    print(request.form['id'])
+    print(request.form['personName'])
 
     return "Hello"
 
