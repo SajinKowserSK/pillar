@@ -32,7 +32,8 @@ def patient():
         pin = request.args.get('pin')
         dnh = DoctorNotesHelper()
         data = dnh.getNote(pin)
-        res = {'message': data['notes'][-1]['text']}
+        print(data)
+        res = {'message': data['notes'][-1]['message']}
         return jsonify(res)
 
 
@@ -49,7 +50,7 @@ def dispensePing():
     pdb = PatientDBHelper()
     data = pdb.getDataForPatient(str(pin))
     dis = DispenseDBHelper()
-    dis.toggleDispense("1")
+    dis.toggleDispense()
     msg = "Your prescription is "
     print(data['prescription'])
     for prescription in data['prescription']:

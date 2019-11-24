@@ -88,10 +88,11 @@ class DispenseDBHelper:
     def __init__(self):
         self.collection = database.dispense
 
-    def toggleDispense(self, val):
-        self.collection.update_one({"dispense": "1"},  {"$set": {"dispense": val}}))
+    def toggleDispense(self):
+        self.collection.update_one(
+            {"dispense": "0"},  {"$set": {"dispense": "1"}})
 
 
 if __name__ == "__main__":
-    d=DoctorNotesHelper()
+    d = DoctorNotesHelper()
     print(d.getNote("1234"))
