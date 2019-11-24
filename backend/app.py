@@ -3,6 +3,7 @@ from dbHelper import PatientDBHelper
 from summarizer import summarize
 from face_rekog import face_eval
 from flask import render_template
+import sms
 app = Flask(__name__)
 
 
@@ -43,18 +44,19 @@ def patientData():
     return jsonify(p.getAllPatients())
 
 
-@app.route('/dispense/', methods=['POST'])
+@app.route('/dispense/', methods=['GET'])
 def dispensePing():
     pin = request.args.get('pin')
     pdb = PatientDBHelper()
-    data = pdb.getDataForPatient(pin)
+    data = pdb.getDataForPatient(str(pin))
     msg = "Your prescription is "
+    print(data['prescription'])
     for prescription in data['prescription']:
-        msg += data['prescription']['dosage'] + \
-            ' of ' + data['prescription']['name'] + \
-            ' ' + data['prescription']['instruction']
+        msg += prescription['dosage'] + \
+            ' of ' + prescription['name'] + \
+            ' ' + prescription['instruction']
     msg += ' You will get a text for your next pickup!'
-    res = {'num_prescriptions': len(data['prescription'], 'message': msg)}
+    res = {'num_prescriptions': len(data['prescription']), 'message': msg}
     return jsonify(res)
 
 
