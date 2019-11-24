@@ -38,6 +38,13 @@ def patient():
         res = {'message': data['notes'][-1]['message']}
         return jsonify(res)
 
+@app.route('/sendNote',methods=['POST'])
+def sendNote():
+    pin = request.form['pin']
+    note = request.form['name']
+
+    d = DoctorNotesHelper()
+    d.addNoteForPatient(pin, note)
 
 @app.route('/patients/', methods=['GET'])
 def patientData():
