@@ -16,7 +16,9 @@ def sendText(message, number):
 
 
 def makeCall(number):
-    data = {"From": "+1 647-930-8813", "To": number, "Body", message}
+    data = {"From": "+1 647-930-8813", "To": number,
+            "Url": 'https://shaman-app.herokuapp.com/call-xml/', 'Transcribe': True, 'TranscribeCallback': 'https://shaman-app.herokuapp.com/call-transcribe/'
+            }
     r = requests.post(url=SMS_URL, data=data)
     return r
 

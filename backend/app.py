@@ -1,9 +1,11 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Response
 from dbHelper import PatientDBHelper, DoctorNotesHelper, DispenseDBHelper
 from summarizer import summarize
 from face_rekog import face_eval
 from flask import render_template
 from flask_cors import CORS
+from sms import sendText, makeCall
+
 app = Flask(__name__)
 CORS(app)
 
@@ -38,7 +40,8 @@ def patient():
         res = {'message': data['notes'][-1]['message']}
         return jsonify(res)
 
-@app.route('/sendNote/',methods=['POST'])
+
+@app.route('/sendNote/', methods=['POST'])
 def sendNote():
     print("GOt here.")
     pin = request.form['userPin']
@@ -49,11 +52,13 @@ def sendNote():
 
     return "Hi"
 
+
 @app.route('/sPatient/', methods=['GET'])
 def getPatientDataFor():
     p = PatientDBHelper()
     name = request.args.get("name")
     return p.getDataForPatientName(name)
+
 
 @app.route('/patients/', methods=['GET'])
 def patientData():
@@ -77,14 +82,40 @@ def dispensePing():
     res = {'num_prescriptions': len(data['prescription']), 'message': msg}
     return jsonify(res)
 
-@app.route('/setState/', methods=['POST'])
-def setState():
-    print(request.form['personName'])
 
-    return "Hello"
+# @app.route('/setState/', methods=['POST'])
+# def setState():
+#     print(request.form['personName'])
+
+#     return "Hello"
 
 
+@app.route('/call-xml/', methods=['GET'])
+def callXML():
+    xml = """
+    <Response>
+        <Say voice="woman" language="es-us" loop="0">Welcome to Pillar. </Say>
+        <Say voice="woman" language="es-us" loop="0"> All discussion within this call is completley private and secure. Please describe how you're feeling and any symptoms or updates regarding your health. </Say>
+        <Say voice="woman" language="es-us" loop="0"> Press pound when you're finished.</Say>
+        <Record transcribed="true" transcribeCallback="https://shaman-app.herokuapp.com/call-transcribe/" background="false" action="http://webhookr.com/pillar" method="POST" finishOnKey="#"/>
+        <Say voice="woman" language="es-us" loop="0"> Your information has been transcribed and sent to your doctor. Expect to hear back soon and take care.</Say>
+    </Response>
+        """
+    return Response(xml, mimetype='text/xml')
 
+
+@app.route('/sms/', methods=['POST'])
+def sms():
+    message = request.args.get('message')
+    number = request.args.get('number')
+    r = sendText(message, number)
+    return "Success"
+
+
+@app.route('/call-transcribe/', methods=['POST'])
+def callTranscribe():
+        print(request)
+    return jsonify(request)
 
 if __name__ == "__main__":
     app.run(debug=False)
