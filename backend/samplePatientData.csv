@@ -1,0 +1,10 @@
+Name,Age,Sex,Height,Weight,BloodType,Symptoms,curr_sentiment,Visits
+Sajin Kowser,18,Male,5.9,180,O,"Nausea, Fatigue",NEGATIVE,2
+Rafit Jamil,18,Male,5.9,170,C,"Depressed, Sad, Lonely",NEGATIVE,3
+Shafin Siddique,19,Male,5.7,180,B+,"Stomach ache, headache, extreme fatigue",NEUTRAL,1
+Labiba Islam,17,Female,5.9,160,B,Headache,NEUTRAL,2
+Raifah Khan,17,Female,5.9,165,A,Depression,NEGATIVE,3
+Lamia Sinthia,17,Female,5.7,160,O-,Blurry vision,NEUTRAL,2
+Nahyan Jagirdar,18,Male,5.8,170,B,Depressed,NEGATIVE,2
+Mike Hawkins,35,Male,6.2,173,O,Currently showing no symptoms. Regular checkup.,POSITIVE,1
+Nathaniel Edwards,28,Male,6.4,180,B,Currently showing no symptoms. Regular checkup.,POSITIVE,2
