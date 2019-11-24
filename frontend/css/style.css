@@ -1854,7 +1854,7 @@
     color: #fff !important; }
 
 .bg-pink {
-  background-color: #E91E63 !important;
+  background-color: #EE4540  !important;
   color: #fff; }
   .bg-pink .content .text,
   .bg-pink .content .number {
@@ -1896,7 +1896,7 @@
     color: #fff !important; }
 
 .bg-cyan {
-  background-color: #00BCD4 !important;
+  background-color: #765D69 !important;
   color: #fff; }
   .bg-cyan .content .text,
   .bg-cyan .content .number {
@@ -1917,7 +1917,7 @@
     color: #fff !important; }
 
 .bg-light-green {
-  background-color: #8BC34A !important;
+  background-color: #F9A26C  !important;
   color: #fff; }
   .bg-light-green .content .text,
   .bg-light-green .content .number {
@@ -1945,7 +1945,7 @@
     color: #fff !important; }
 
 .bg-orange {
-  background-color: #FF9800 !important;
+  background-color: #C72C41 !important;
   color: #fff; }
   .bg-orange .content .text,
   .bg-orange .content .number {
@@ -4633,15 +4633,15 @@ section.content {
     border-top-color: transparent !important; }
 
 .panel-group .panel-col-pink {
-  border: 1px solid #E91E63; }
+  border: 1px solid #8BC34A; }
   .panel-group .panel-col-pink .panel-title {
-    background-color: #E91E63 !important;
+    background-color: #8BC34A !important;
     color: #fff; }
   .panel-group .panel-col-pink .panel-body {
     border-top-color: transparent !important; }
 
 .panel-group .panel-col-purple {
-  border: 1px solid #9C27B0; }
+  border: 1px solid #8BC34A; }
   .panel-group .panel-col-purple .panel-title {
     background-color: #9C27B0 !important;
     color: #fff; }
@@ -4695,6 +4695,13 @@ section.content {
     color: #fff; }
   .panel-group .panel-col-teal .panel-body {
     border-top-color: transparent !important; }
+
+  .formSubmit{
+    position: absolute;
+    right: 10;
+    bottom: -20;
+
+  }
 
 .panel-group .panel-col-green {
   border: 1px solid #4CAF50; }
@@ -4829,7 +4836,7 @@ section.content {
 .panel-group .panel-warning {
   border: 1px solid #ff9600; }
   .panel-group .panel-warning .panel-title {
-    background-color: #ff9600;
+    background-color: lightgrey;
     color: #fff; }
 
 .panel-group .panel-danger {
@@ -4845,7 +4852,7 @@ section.content {
 
 .full-body .panel-col-pink .panel-body {
   border-top-color: #fff !important;
-  background-color: #E91E63;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-purple .panel-body {
@@ -4875,12 +4882,12 @@ section.content {
 
 .full-body .panel-col-cyan .panel-body {
   border-top-color: #fff !important;
-  background-color: #00BCD4;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-teal .panel-body {
   border-top-color: #fff !important;
-  background-color: #009688;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-green .panel-body {
@@ -4900,17 +4907,17 @@ section.content {
 
 .full-body .panel-col-yellow .panel-body {
   border-top-color: #fff !important;
-  background-color: #ffe821;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-amber .panel-body {
   border-top-color: #fff !important;
-  background-color: #FFC107;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-orange .panel-body {
   border-top-color: #fff !important;
-  background-color: #FF9800;
+  background-color: lightgrey;
   color: #fff; }
 
 .full-body .panel-col-deep-orange .panel-body {
@@ -7885,14 +7892,14 @@ fieldset[disabled] .form-control {
 
 /* Profile Page ================================ */
 .profile-card .profile-header {
-  background-color: #ad1455;
+  background-color: lightgrey;
   padding: 42px 0; }
 
 .profile-card .profile-body .image-area {
   text-align: center;
   margin-top: -64px; }
   .profile-card .profile-body .image-area img {
-    border: 2px solid #ad1455;
+    border: 2px solid lightgrey;
     padding: 2px;
     margin: 2px;
     -webkit-border-radius: 50%;
@@ -7908,7 +7915,7 @@ fieldset[disabled] .form-control {
     margin-bottom: 0; }
     .profile-card .profile-body .content-area p:last-child {
       font-weight: 600;
-      color: #ad1455;
+      color: black;
       margin-top: 5px; }
 
 .profile-card .profile-footer {
