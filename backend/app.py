@@ -93,14 +93,15 @@ def dispensePing():
 @app.route('/call-xml/', methods=['GET'])
 def callXML():
     xml = """
-    <Response>
-        <Say voice="woman" language="es-us" loop="0">Welcome to Pillar. </Say>
-        <Say voice="woman" language="es-us" loop="0"> All discussion within this call is completley private and secure. Please describe how you're feeling and any symptoms or updates regarding your health. </Say>
-        <Say voice="woman" language="es-us" loop="0"> Press pound when you're finished.</Say>
-        <Record transcribed="true" transcribeCallback="https://pillar-tower.herokuapp.com/call-transcribe/" background="false" action="http://webhookr.com/pillar" method="POST" finishOnKey="#"/>
-        <Say voice="woman" language="es-us" loop="0"> Your information has been transcribed and sent to your doctor. Expect to hear back soon and take care.</Say>
-    </Response>
-        """
+   <Response>
+        <Say voice="woman">Welcome to Pillar. </Say>
+        <Say voice="woman">All discussion within this call is completley private and secure. Please describe how you're feeling and any symptoms or updates regarding your health.
+        </Say>
+        <Say voice="woman"> Press pound when you're finished.</Say>
+        <Record action="http://webhookr.com/pillar" method="POST" finishOnKey="#"/>
+        <Say voice="woman">Your information has been transcribed and sent to your doctor. Expect to hear back soon and take care.
+        </Say>
+   </Response>"""
     return Response(xml, mimetype='text/xml')
 
 
