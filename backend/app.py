@@ -3,9 +3,11 @@ from dbHelper import PatientDBHelper, DoctorNotesHelper, DispenseDBHelper
 from summarizer import summarize
 from face_rekog import face_eval
 from flask import render_template
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
-
+CURRENT_STATE = ""
 @app.route("/")
 def home():
     return "Hello, World!"
@@ -52,7 +54,6 @@ def dispensePing():
     dis = DispenseDBHelper()
     dis.toggleDispense()
     msg = "Your prescription is "
-    print(data['prescription'])
     for prescription in data['prescription']:
         msg += prescription['dosage'] + \
             ' of ' + prescription['name'] + \
@@ -60,6 +61,12 @@ def dispensePing():
     msg += ' You will get a text for your next pickup!'
     res = {'num_prescriptions': len(data['prescription']), 'message': msg}
     return jsonify(res)
+
+@app.route('/setState/', methods=['POST'])
+def setState():
+    print(request.form['id'])
+
+    return "Hello"
 
 
 if __name__ == "__main__":

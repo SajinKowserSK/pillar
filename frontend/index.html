@@ -6,6 +6,23 @@
    //-->
 </script>
 
+<script>
+    function sentimentColor(sentiment){
+if (sentiment == "NEGATIVE" ){
+	return "label bg-red";
+}
+
+else if (sentiment == "NEUTRAL") {
+	return "label bg-blue";
+}
+
+else{
+	return "label bg-green";
+
+}
+}
+</script>
+
 
 <head>
     <meta charset="UTF-8">
@@ -36,9 +53,11 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="css/themes/all-themes.css" rel="stylesheet" />
+
 </head>
 
 <body class="theme-green">
+
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -512,10 +531,6 @@
                     </div>
                 </div>
             </div>
-            <!-- #END# Widgets -->
-            <!-- CPU Usage -->
-
-            <!-- #END# CPU Usage -->
 
 
             <div class="row clearfix">
@@ -539,96 +554,18 @@
                         </div>
                         <div class="body">
                             <div class="table-responsive">
-                                <table class="table table-hover dashboard-task-infos">
+                                <table class="table table-hover dashboard-task-infos" id="table1">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>Pin</th>
                                             <th>Task</th>
-                                            <th>Status</th>
-                                            <th>Manager</th>
+                                            <th>Current Sentiment</th>
+                                            <th>Doctor in Charge</th>
                                             <th>Progress</th>
                                         </tr>
                                     </thead>
+
                                     <tbody>
-                                    <tr>
-                                            <td>1</td>
-                                            <td><a href="patient.html">Shafin Siddique</a></td>
-                                            <td><span class="label bg-green">Doing</span></td>
-                                            <td>Labiba Islam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" style="width: 90%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-
-
-<!--                                     <tr>-->
-
-<!--                                            <td>1</td>-->
-<!--                                         <td><a href="patient.html">Shafin Siddique</a></td>-->
-
-
-<!--                                            <td><span class="label bg-green">Doing</span></td>-->
-<!--                                            <td>Labiba Islam</td>-->
-<!--                                            <td>-->
-<!--                                                <div class="progress">-->
-<!--                                                    <div class="progress-bar bg-green" role="progressbar"
-aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>-->
-<!--                                                </div>-->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                     <tbody>-->
-
-
-
-
-                                        <tr>
-                                            <td>2</td>
-                                            <td><a href="patient.html">Rafit Jamil</a></td>
-                                            <td><span class="label bg-blue">To Do</span></td>
-                                            <td>Labiba Islam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td><a href="patient.html">Raifah Khan</a></td>
-                                            <td><span class="label bg-light-blue">On Hold</span></td>
-                                            <td>Labiba Islam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-light-blue" role="progressbar" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100" style="width: 72%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td><a href="patient.html">Oliver Rahim</a></td>
-                                            <td><span class="label bg-orange">Wait Approvel</span></td>
-                                            <td>Labiba Islam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-orange" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" style="width: 95%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td><a href="patient.html">Jordan Marshall</a></td>
-                                            <td>
-                                                <span class="label bg-red">Suspended</span>
-                                            </td>
-                                            <td>Labiba Islam</td>
-                                            <td>
-                                                <div class="progress">
-                                                    <div class="progress-bar bg-red" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%"></div>
-                                                </div>
-                                            </td>
-                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -675,13 +612,62 @@ aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></di
             </div>
 
 
-
-
-
                 <!-- #END# Browser Usage -->
             </div>
         </div>
     </section>
+   <form method="POST" action="http://127.0.0.1:5000/setState/" id="form">
+    <input type="hidden" name="id" value="10" />
+    </form>
+    <script>
+        function sendPost() {
+        //     var http = new XMLHttpRequest();
+        //     var data = new FormData();
+        // data.append('data', 'hello');
+        // var url = 'http://127.0.0.1:5000/setState/';
+        // http.open('POST', url, true);
+        // http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        // http.send(data);
+            document.getElementById("form").submit();
+
+        }
+        var request = new XMLHttpRequest()
+
+// Open a new connection, using the GET request on the URL endpoint
+        var counter = 1;
+request.open('GET', 'http://127.0.0.1:5000/patients/', true)
+request.onload = function() {
+    var data = JSON.parse(this.response);
+    data.forEach(patient => {
+        let table = document.getElementById("table1")
+        let row = table.insertRow(counter);
+        counter += 1;
+
+        var sajin = sentimentColor(patient.curr_sentiment)
+        console.log(sajin);
+
+        row.innerHTML = " <td>#" + patient.pin + "</td>\n" +
+            "<td><a href=javascript:sendPost();>" + patient.name + "</a></td>\n" +
+            "<td><span class=\"" + sajin + "\">" + patient.curr_sentiment + "</span></td>\n" +
+
+            "<td>Labiba Islam</td>\n" +
+            "<td>\n" +
+            "<div class=\"progress\">\n" +
+            "<div class=\"progress-bar bg-green\" role=\"progressbar\" aria-valuenow=\"92\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"width: 90%\"></div>\n" +
+            "</div>\n" +
+            "</td>"
+
+
+
+    })
+
+}
+
+
+        request.send()
+
+    </script>
+
 
     <!-- Jquery Core Js -->
     <script src="plugins/jquery/jquery.min.js"></script>
@@ -724,6 +710,7 @@ aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></di
 
     <!-- Demo Js -->
     <script src="js/demo.js"></script>
+
 </body>
 
 </html>
