@@ -3,7 +3,6 @@ from dbHelper import PatientDBHelper
 from summarizer import summarize
 from face_rekog import face_eval
 from flask import render_template
-import sms
 app = Flask(__name__)
 
 
