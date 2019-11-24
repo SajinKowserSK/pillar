@@ -24,7 +24,7 @@ class PatientDBHelper:
         return self.collection.find_one({"name":patientName})
 
     def addNewPatient(self, name, age, sex, height, weight, bloodtype,  symptoms,
-                      curr_sentiment, numberOfVisits):
+                      curr_sentiment, numberOfVisits, pin):
 
         """insert a new patient into the system. This is when the patient
         registers for the first time. Only their name is stored and their medical record
@@ -36,7 +36,8 @@ class PatientDBHelper:
                                     "blood_type":bloodtype,"prescription":[],
                                     "number_of_visits":numberOfVisits,
                                     "curr_symptoms":symptoms,
-                                    "curr_sentiment":curr_sentiment})
+                                    "curr_sentiment":curr_sentiment,
+                                    "pin":pin})
 
 
         print("{} added to the patient database.".format(name))
@@ -56,5 +57,29 @@ class PatientDBHelper:
         query = {"name": patientName}
         self.collection.update_one(query, {"$set":{keyName:value}})
 
+    def addToPrescription(self, patientName, prescription):
+        query = {"name": patientName}
+        self.collection.update_one(query, {"$push":{"prescription":prescription}})
+
+
+class DoctorNotesHelper:
+    def __init__(self):
+        self.collection = database.doctorNotes
+
+
+    def addPatient(self, pin, patientName, doctorNotes):
+        self.collection.insert_one({"pin":pin,
+                                    "name": patientName,
+                                    "notes":doctorNotes,
+                                    "time":datetime.now()})
+
+        print("Doctor's notes added for {}".format(patientName))
+
+
+    def getNote(self, pin):
+        return self.collection.find_one({"pin":pin})
+
 if __name__ == "__main__":
-    p = PatientDBHelper()
+    d = DoctorNotesHelper()
+    print(d.getNote("1234"))
+
