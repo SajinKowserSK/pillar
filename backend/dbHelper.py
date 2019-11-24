@@ -1,13 +1,22 @@
 from pymongo import MongoClient
 from datetime import datetime
 import summarizer
-import csv
 client = MongoClient("mongodb+srv://shafinsiddique:Ishafin98@cluster0-zv1ff.mongodb.net/test?retryWrites=true&w=majority")
 database = client.get_database("shaman")
 
 class PatientDBHelper:
     def __init__(self):
         self.collection = database.patientData
+
+    def getAllPatients(self):
+        documents = []
+
+        for docs in self.collection.find({}):
+            del docs['_id']
+            documents.append(docs)
+
+        return documents
+
 
     def getDataForPatient(self, patientName):
         """Get all the data for patient with 'patientName' """
