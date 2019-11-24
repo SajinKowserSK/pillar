@@ -5,6 +5,7 @@ from face_rekog import face_eval
 from flask import render_template
 from flask_cors import CORS
 from sms import sendText, makeCall
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -122,8 +123,8 @@ def call():
 
 @app.route('/call-transcribe/', methods=['POST'])
 def callTranscribe():
-    print(request)
-    return jsonify(request)
+    print(request.form())
+    return "Hi"
 
 
 if __name__ == "__main__":
