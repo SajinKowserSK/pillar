@@ -1,6 +1,6 @@
 ## Links
-Youtube Demo: https://youtu.be/Fxb96g8-exg
-VoiceFlow Demo: https://youtu.be/Fxb96g8-exg
+Youtube/VoiceFlow Demo: https://youtu.be/Fxb96g8-exg
+
 
 ## Inspiration
 Having grown up in developing countries, our team understands that there are many people who simply cannot afford to visit doctors frequently (distance, money, etc.), even when regular check-ups are required. This brings forth the problem - patients in developing countries often have the money to buy medicine but not enough money to visit the doctor every time. Not only does this disparity lead to lower mortality rates for citizens and children but makes it difficult to seek help when you truly need it.
