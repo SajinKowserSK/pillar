@@ -89,7 +89,8 @@ class DoctorNotesHelper:
         print("Note created for Patient #{}".format(pin))
 
     def getNote(self, pin):
-        return self.collection.find_one({"pin": pin})
+        d = self.collection.find_one({"pin": pin})
+        return d
 
 
 class DispenseDBHelper:

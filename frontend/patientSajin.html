@@ -1,6 +1,9 @@
 <html class="chrome gr__localhost"><head><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script>
     <script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript">
-   <!--
+
+        <!--
+
+
       var name = "Labiba Islam";
    //-->
 </script>
@@ -159,12 +162,12 @@
                         <div class="profile-header">&nbsp;</div>
                         <div class="profile-body">
                             <div class="image-area">
-                                <img src="rafitulla.jpg">
+                                <img src="sajin.jpg">
                             </div>
                             <div class="content-area">
-                                <h3>PATIENT NAME</h3>
-                                <p>LOCATION  • AGE  •  WEIGHT   </p>
-                                <p>PATIENT SINCE: </p>
+                                <h3 name="patientName">Sajin Kowser</h3>
+                                <p id="patientInfo"></p>
+                                <p id="patientSince"></p>
                             </div>
                         </div>
                         <div class="profile-footer">
@@ -253,17 +256,6 @@
                 </div>
             </div>
 
-                <script>
-                    function incrementValue(formNum)
-{
-    var value = parseInt(document.getElementById(formNum).value, 10);
-    value = isNaN(value) ? 0 : value;
-    value++;
-    document.getElementById(formNum).value = value;
-}
-
-                </script>
-
                    <div class="row clearfix">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
@@ -282,16 +274,17 @@
                             <h2 class="card-inside-title">Enter New Notes About Patient Here </h2>
                             <div class="row clearfix">
                                 <div class="col-sm-12">
-                                    <div class="form-group">
+                                    <form id='noteForm' target="_blank" method="POST" action="http://127.0.0.1:5000/sendNote/">
+                                    <div class="form-group" >
                                         <div class="form-line">
-                                            <textarea rows="4" class="form-control no-resize"></textarea>
+                                            <textarea id="doctorNote" name="doctorNote" rows="4" class="form-control no-resize"></textarea>
                                         </div>
-
+                                            <input type="hidden" name="userPin" id="userPin"/>
                                     </div>
                                     <div class = "formSubmit">
-                                        <button type="button" class="btn btn-primary btn-lg">Submit</button>
+                                        <input type="submit" class="btn btn-primary btn-lg"></input>
                                     </div>
-
+                                    </form>
                                 </div>
                             </div>
 
@@ -301,11 +294,23 @@
                 </div>
             </div>
 
+
+                <script>
+                    var request =  new XMLHttpRequest();
+                    request.open('GET', 'http://127.0.0.1:5000/sPatient/?name=Sajin Kowser', false);
+                    request.send(null);
+                    console.log(request.responseText);
+                    var data = JSON.parse(request.responseText);
+                    console.log(data['pin']);
+                    document.getElementById("userPin").value = data['pin'];
+                </script>
+
+
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="card">
                         <div class="header">
                             <h2>
-                                PATIENT MEETING NOTES
+                                PATIENT SUMMARY
                             </h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
@@ -321,101 +326,62 @@
                             </ul>
                         </div>
                         <div class="body">
-                            <div class="row clearfix">
-                                <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                    <div class="panel-group full-body" id="accordion_19" role="tablist" aria-multiselectable="true">
-                                        <div class="panel panel-col-pink">
-                                            <div class="panel-heading" role="tab" id="headingOne_19">
-                                                <h4 class="panel-title">
-                                                    <a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="true" aria-controls="collapseOne_19">
-                                                        <i class="material-icons">perm_contact_calendar</i> Most Recent Meeting Note
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseOne_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_19">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                    single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                    helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                                    Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                    raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable VHS.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-col-cyan">
-                                            <div class="panel-heading" role="tab" id="headingTwo_19">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseTwo_19" aria-expanded="false" aria-controls="collapseTwo_19">
-                                                        <i class="material-icons">cloud_download</i> Second Most Recent Note
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseTwo_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo_19">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                    single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                    helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                                    Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                    raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable VHS.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-col-teal">
-                                            <div class="panel-heading" role="tab" id="headingThree_19">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree_19" aria-expanded="false" aria-controls="collapseThree_19">
-                                                        <i class="material-icons">contact_phone</i> Third Most Recent Note
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseThree_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_19">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                    single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                    helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                                    Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                    raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable VHS.
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="panel panel-col-orange">
-                                            <div class="panel-heading" role="tab" id="headingFour_19">
-                                                <h4 class="panel-title">
-                                                    <a class="collapsed" role="button" data-toggle="collapse" href="#collapseFour_19" aria-expanded="false" aria-controls="collapseFour_19">
-                                                        <i class="material-icons">folder_shared</i> Fourth Most Recent Note
-                                                    </a>
-                                                </h4>
-                                            </div>
-                                            <div id="collapseFour_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour_19">
-                                                <div class="panel-body">
-                                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                    non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                    eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                    single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                    helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                                    Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                    raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                                    accusamus labore sustainable VHS.
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="row clearfix" id="docNotes">
+                                <!--<div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">-->
+                                    <!--<div class="panel-group full-body" id="accordion_19" role="tablist" aria-multiselectable="true">-->
+                                        <!--<div class="panel panel-col-pink">-->
+                                            <!--<div class="panel-heading" role="tab" id="headingOne_19">-->
+                                                <!--<h4 class="panel-title">-->
+                                                    <!--<a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="true" aria-controls="collapseOne_19">-->
+                                                        <!--<i class="material-icons">perm_contact_calendar</i> Most Recent Meeting Note-->
+                                                    <!--</a>-->
+                                                <!--</h4>-->
+                                            <!--</div>-->
+                                            <!--<div id="collapseOne_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_19">-->
+                                                <!--<div class="panel-body">-->
+                                                    <!--Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,-->
+                                                    <!--non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum-->
+                                                    <!--eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid-->
+                                                    <!--single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh-->
+                                                    <!--helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.-->
+                                                    <!--Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,-->
+                                                    <!--raw denim aesthetic synth nesciunt you probably haven't heard of them-->
+                                                    <!--accusamus labore sustainable VHS.-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+
+                                        <!--</div>-->
+                                    <!--</div>-->
                                 </div>
+                            <div class="row clearfix" id="actualPatientDescription">
+
+
                             </div>
                         </div>
                     </div>
                 </div>
 
+   <script>
+                    var request =  new XMLHttpRequest();
+                    request.open('GET', 'http://127.0.0.1:5000/sPatient/?name=Sajin Kowser', false);
+                    request.send(null);
+                    var data = JSON.parse(request.responseText);
+                    console.log(request.responseText);
 
+                    document.getElementById("patientInfo").innerHTML = "City: Toronto • Age:" + data['age']  + " • Weight: " + data['weight']  ;
+                    document.getElementById("patientSince").innerHTML = "NUMBER OF VISITS: " + data['number_of_visits'] ;
+
+                    document.getElementById("docNotes").innerHTML = data['medicalRecord'][0]['data']['summary']  ;
+
+                    // var request2 = new XMLHttpRequest();
+                    //  request2.open('GET', 'http://127.0.0.1:5000/getPatientData/?pin='+data['pin'], false);
+                    // request2.send(null);
+                    // var doctorData =  JSON.parse(request2.responseText);
+                    // var content =  document.getElementById("docNotes");
+                    // for(var x=0; x<doctorData.length; x++) {
+                    //
+                    // }
+            </script>
 
                  <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 
@@ -481,7 +447,7 @@
 
                     <div class="card">
                         <div class="header">
-                            <h2>Visits Over Past Year</h2>
+                            <h2>WEIGHT HISTORY</h2>
                             <ul class="header-dropdown m-r--5">
                                 <li class="dropdown">
                                     <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

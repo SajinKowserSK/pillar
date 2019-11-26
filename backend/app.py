@@ -44,7 +44,6 @@ def patient():
 
 @app.route('/sendNote/', methods=['POST'])
 def sendNote():
-    print("GOt here.")
     pin = request.form['userPin']
     note = request.form['doctorNote']
     print(pin, note)
@@ -66,6 +65,13 @@ def patientData():
     p = PatientDBHelper()
     return jsonify(p.getAllPatients())
 
+
+@app.route('/getPatientData/', methods=['GET'])
+def getPatientData():
+    print(request.args.get("pin"))
+    d = DoctorNotesHelper()
+    # d = DoctorNotesHelper()
+    return jsonify(d.getNote(request.args.get("pin"))['notes'])
 
 @app.route('/dispense/', methods=['POST'])
 def dispensePing():
