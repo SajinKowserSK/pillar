@@ -26,7 +26,11 @@ function initLineChart(element_id){
   ],
   xkey: 'y',
   ykeys: ['a', 'b'],
-  labels: ['Series A', 'Series B']
+  labels: ['Series A', 'Series B'],
+  lineColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+  pointFillColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+
+
 });
 
 }
@@ -46,7 +50,9 @@ function initAreaChart(element_id) {
   ],
   xkey: 'y',
   ykeys: ['a', 'b'],
-  labels: ['Series A', 'Series B']
+  labels: ['Series A', 'Series B'],
+  pointFillColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+  lineColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
 });
 }
 
@@ -77,7 +83,7 @@ function initBar(element_id) {
             xkey: 'x',
             ykeys: ['y', 'z', 'a'],
             labels: ['Y', 'Z', 'A'],
-            barColors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(0, 150, 136)'],
+            barColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
         });
 }
 
@@ -89,7 +95,7 @@ function initDonutChart(element_id) {
     Morris.Donut({
         element: element_id,
         data: [{
-            label: 'patient1',
+            label: 'sajin',
             value: 37
         }, {
             label: '2',
@@ -105,7 +111,7 @@ function initDonutChart(element_id) {
             label: '5',
             value: 3
         }],
-        colors: ['rgb(233, 30, 99)', 'rgb(0, 188, 212)', 'rgb(255, 152, 0)', 'rgb(0, 150, 136)', 'rgb(96, 125, 139)'],
+        colors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
         formatter: function (y) {
             return y + '%'
         }
