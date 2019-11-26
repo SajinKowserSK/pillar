@@ -4865,6 +4865,8 @@ section.content {
   background-color: #673AB7;
   color: #fff; }
 
+
+}
 .full-body .panel-col-indigo .panel-body {
   border-top-color: #fff !important;
   background-color: #3F51B5;
@@ -6706,6 +6708,7 @@ fieldset[disabled] .form-control {
   left: 0;
   z-index: 12;
   width: 100%; }
+
   .navbar .navbar-brand {
     white-space: nowrap;
     -ms-text-overflow: ellipsis;
@@ -6727,6 +6730,8 @@ fieldset[disabled] .form-control {
       font-size: 26px; }
   .navbar .navbar-collapse.in {
     overflow: visible; }
+
+
 
 .ls-closed .sidebar {
   margin-left: -300px; }
@@ -6789,6 +6794,12 @@ fieldset[disabled] .form-control {
   .navbar-header .bars {
     float: left;
     text-decoration: none; }
+
+.navLogo{
+  position: absolute;
+  left: 50px;
+  bottom: 20px;
+}
 
 .navbar-nav > li > a {
   padding: 7px 7px 2px 7px;

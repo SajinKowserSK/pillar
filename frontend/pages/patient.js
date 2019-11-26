@@ -95,7 +95,7 @@ function initDonutChart(element_id) {
     Morris.Donut({
         element: element_id,
         data: [{
-            label: 'patient1',
+            label: 'sajin',
             value: 37
         }, {
             label: '2',

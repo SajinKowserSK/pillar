@@ -27,8 +27,10 @@ function initLineChart(element_id){
   xkey: 'y',
   ykeys: ['a', 'b'],
   labels: ['Series A', 'Series B'],
-      lineColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+  lineColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
   pointFillColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+
+
 });
 
 }
@@ -49,7 +51,7 @@ function initAreaChart(element_id) {
   xkey: 'y',
   ykeys: ['a', 'b'],
   labels: ['Series A', 'Series B'],
-        pointFillColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
+  pointFillColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
   lineColors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
 });
 }
@@ -93,20 +95,20 @@ function initDonutChart(element_id) {
     Morris.Donut({
         element: element_id,
         data: [{
-            label: 'Digestive System',
+            label: 'sajin',
             value: 37
         }, {
-            label: 'Immune System',
+            label: '2',
             value: 30
         }, {
-            label: 'Nervous System',
+            label: '3',
             value: 18
         }, {
-            label: 'Excretory System',
+            label: '4',
             value: 12
         },
         {
-            label: 'Cardio System',
+            label: '5',
             value: 3
         }],
         colors: ['#C72C41', '#801336', '#F9A26C', '#765D69', '#2D142C'],
