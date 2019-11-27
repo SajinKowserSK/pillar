@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a25b2af7-7529-4961-9ee4-9930b609cda0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pillarLogo.PNG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pillarLogoTransparent.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/pages/patient.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/pages/patient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/patient.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/patient.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patient.html" beforeDir="false" afterPath="$PROJECT_DIR$/patient.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/patientRafit.html" beforeDir="false" afterPath="$PROJECT_DIR$/patientRafit.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,8 +75,16 @@
       <workItem from="1574486041190" duration="21146000" />
       <workItem from="1574511023040" duration="225000" />
       <workItem from="1574511304939" duration="29071000" />
-      <workItem from="1574723089684" duration="4243000" />
+      <workItem from="1574723089684" duration="7710000" />
     </task>
+    <task id="LOCAL-00001" summary="adding on to create cleaner front end">
+      <created>1574727415517</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574727415518</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,5 +100,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding on to create cleaner front end" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding on to create cleaner front end" />
   </component>
 </project>
