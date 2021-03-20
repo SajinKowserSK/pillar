@@ -13,7 +13,7 @@ gunicorn==20.0.2
 idna==2.8
 iso8601==0.1.12
 itsdangerous==1.1.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 jmespath==0.9.4
 MarkupSafe==1.1.1
 polling==0.3.1
