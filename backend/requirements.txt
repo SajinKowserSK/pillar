@@ -20,7 +20,7 @@ polling==0.3.1
 pymongo==3.9.0
 python-dateutil==2.8.0
 pytz==2019.3
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 s3transfer==0.2.1
 serial==0.0.97
